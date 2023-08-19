@@ -104,6 +104,7 @@ for (long i = 0; i < files.LongLength; i++)
             // Do the rename
             string realnewfile = Path.Combine(Path.GetDirectoryName(originalfile), newfile + ext);
             File.Move(originalfile, realnewfile, false);
+            //Console.WriteLine($"{originalfile} -> {realnewfile}");
         }
     }
 }
