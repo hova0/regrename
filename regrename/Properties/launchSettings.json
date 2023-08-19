@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "regrename": {
+      "commandName": "Project",
+      "commandLineArgs": "(.*?Sunred.*?)_\\[.*?\\] $1  \\\\hovastorage\\MainStorage\\General\\Anime  --preview"
+    }
+  }
+}
