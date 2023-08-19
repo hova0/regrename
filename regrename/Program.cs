@@ -32,7 +32,7 @@ if (regex == null)
 {
     throw new Exception("No regex provided");
 }
-if (co.GetByKey("preview") != null)
+if (co.GetByKey("preview") != null || co.GetByKey("p") != null || co.GetByKey("whatif") != null)
 {
     preview = true;
 }
