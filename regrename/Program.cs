@@ -1,5 +1,4 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Microsoft.VisualBasic.FileIO;
 using regrename;
 using System.Text.RegularExpressions;
 
@@ -11,16 +10,11 @@ ConsoleOptions co = new ConsoleOptions(args);
 
 
 
-//string mask = "*.*";
-//if(Path.GetFileName(dir).IndexOfAny(new char[] { '*', '?'}) >= 0)
-//{
-//    mask = Path.GetFileName(dir);
-//}
-
-//if(Directory.Exists(dir) == false && mask != "*.*")
-//{
-//    dir = Path.GetDirectoryName(dir);   // chop the mask off
-//}
+if(co.GetByKey("h") != null || co.GetByKey("help") != null)
+{
+    ShowHelp();
+    return;
+}
 
 // Get regex
 string? regex = co.GetByOrdinal(0)?.value;
@@ -107,4 +101,20 @@ for (long i = 0; i < files.LongLength; i++)
             //Console.WriteLine($"{originalfile} -> {realnewfile}");
         }
     }
+}
+
+
+void ShowHelp()
+{
+    Console.WriteLine("Rename files with .NET regular expressions");
+    Console.WriteLine("regrename.exe <match> <replace> [directory] --preview -r --help");
+
+    Console.WriteLine("  [directory] - optional. Defaults to current directory.");
+    Console.WriteLine("  --preview   - optional. Shows preview of the rename");
+    Console.WriteLine("  -r          - optional. Recursive search.  Will rename in all subdirectories as well. ");
+    Console.WriteLine("  --help      - optional. Shows this help.");
+    Console.WriteLine("Alternate format:  regrename.exe -regex <regex> --replace <replace> --dir <directory> --preview -r --help");
+    Console.WriteLine();
+    Console.WriteLine("The above regexes **only** work on the filenames, not directories or extensions.");
+
 }
